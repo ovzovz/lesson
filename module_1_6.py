@@ -1,0 +1,15 @@
+print ('***********dict***********')
+my_dict={"Max":2015,'Anna':2007,'Mary':2009}
+print (my_dict)
+print(my_dict.get('Anna','Нет информации'))
+print(my_dict.get('Ivan', 'Нет информации'))
+my_dict.update({'Stepan':2020,'Lena':2015})
+p=my_dict.pop('Max')
+print (p)
+print (my_dict)
+print ('************set***********')
+my_set ={1,2,7,2,2,1,'abc', False}
+print(my_set)
+my_set.update({99,55})
+my_set.discard(2)
+print(my_set)
