@@ -4,16 +4,16 @@ class UrTube():
     videos =[]
     current_user = None
     def log_in(self, nickname, password):
-        for _ in self.users:
-            if (_.nickname.upper() == nickname.upper()
-                    and _.password == hash(password)):
-                self.current_user = _
+        for user_ in self.users:
+            if (user_.nickname.upper() == nickname.upper()
+                    and user_.password == hash(password)):
+                self.current_user = user_
         #if self.current_user == None:
             #print ("Need to register ", nickname)
     def register(self, nickname, password, age):
         found=0
-        for _ in self.users:
-            if _.nickname.upper()==nickname.upper():
+        for user_ in self.users:
+            if user_.nickname.upper()==nickname.upper():
                 print (f"Пользователь {nickname} уже существует")
                 found=1
                 break
@@ -26,34 +26,34 @@ class UrTube():
         self.current_user = None
 
     def add(self,*video):
-       for _ in video:
-            if _ not in self.videos:
-                self.videos.append(_)
+       for video_ in video:
+            if video_ not in self.videos:
+                self.videos.append(video_)
 
     def get_videos(self,keyword):
         for_return=[]
-        for _ in self.videos:
-            if _.title.upper().__contains__(keyword.upper()) :
-            #if _.title.upper().find(keyword.upper()) > -1:
-               for_return.append(_.title)
+        for video_ in self.videos:
+            if video_.title.upper().__contains__(keyword.upper()) :
+            #if video_.title.upper().find(keyword.upper()) > -1:
+               for_return.append(video_.title)
         return for_return
 
     def watch_video(self, title):
         if self.current_user == None:
             print("Войдите в аккаунт, чтобы смотреть видео")
             return
-        for _ in self.videos:
-            if title.upper() == _.title.upper():
-                if _.adult_mode and self.current_user.age < 18:
+        for video_ in self.videos:
+            if title.upper() == video_.title.upper():
+                if video_.adult_mode and self.current_user.age < 18:
                     print("Вам нет 18 лет, пожалуйста покиньте страницу")
                     return
                 else:
-                    for _.time_now  in range(0,_.duration):
-                        _.time_now+=1
-                        print(_.time_now, end=' ')
+                    for video_.time_now  in range(0,video_.duration):
+                        video_.time_now+=1
+                        print(video_.time_now, end=' ')
                         sleep(1)
                     print(" Конец видео")
-                    _.time_now=0
+                    video_.time_now=0
                     return
         print(f'Видео {title} не существует')
 
