@@ -4,7 +4,7 @@ from threading import Thread
 
 def write_words(word_count, file_name):
     with open(file_name, 'w', encoding='utf-8') as file:
-        for i in range( 1, word_count):
+        for i in range( 1, word_count+1):
             file.write('Какое-то слово № '+ str(i) + '\n')
             sleep(0.1)
     print(f"Завершилась запись в файл {file_name}")
@@ -28,10 +28,11 @@ thr2.start()
 thr3.start()
 thr4.start()
 
-#thr1.join()
-#thr2.join()
+thr1.join()
+thr2.join()
 thr3.join()
-#thr4.join()
+thr4.join()
+
 end_time=datetime.now()
 print(f'Работа потоков {end_time - start_time}')
 
